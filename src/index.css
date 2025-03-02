@@ -1,0 +1,234 @@
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+body {
+  font-family: "iranyekan", sans-serif;
+}
+
+/* Regular - Weight 400 */
+@font-face {
+  font-family: "iranyekan";
+  src: url("./assets/fonts/yekan/woff2/iranyekan-regular.woff2") format("woff2"),
+    url("./assets/fonts/yekan/woff/iranyekan-regular.woff") format("woff"),
+    url("./assets/fonts/yekan/ttf/iranyekan-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Medium - Weight 500 */
+@font-face {
+  font-family: "iranyekan";
+  src: url("./assets/fonts/yekan/woff2/iranyekan-medium.woff2") format("woff2"),
+    url("./assets/fonts/yekan/woff/iranyekan-medium.woff") format("woff"),
+    url("./assets/fonts/yekan/ttf/iranyekan-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* SemiBold - Weight 600 */
+@font-face {
+  font-family: "iranyekan";
+  src: url("./assets/fonts/yekan/woff2/iranyekan-semibold.woff2")
+      format("woff2"),
+    url("./assets/fonts/yekan/woff/iranyekan-semibold.woff") format("woff"),
+    url("./assets/fonts/yekan/ttf/iranyekan-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Bold - Weight 700 */
+@font-face {
+  font-family: "iranyekan";
+  src: url("./assets/fonts/yekan/woff2/iranyekan-bold.woff2") format("woff2"),
+    url("./assets/fonts/yekan/woff/iranyekan-bold.woff") format("woff"),
+    url("./assets/fonts/yekan/ttf/iranyekan-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ExtraBold - Weight 800 */
+@font-face {
+  font-family: "iranyekan";
+  src: url("./assets/fonts/yekan/woff2/iranyekan-extrabold.woff2")
+      format("woff2"),
+    url("./assets/fonts/yekan/woff/iranyekan-extrabold.woff") format("woff"),
+    url("./assets/fonts/yekan/ttf/iranyekan-extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* Black - Weight 900 */
+@font-face {
+  font-family: "iranyekan";
+  src: url("./assets/fonts/yekan/woff2/iranyekan-black.woff2") format("woff2"),
+    url("./assets/fonts/yekan/woff/iranyekan-black.woff") format("woff"),
+    url("./assets/fonts/yekan/ttf/iranyekan-black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@layer base {
+  html {
+    font-size: 106.7%;
+  }
+
+  html,
+  body,
+  #root {
+  }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --sidebar-size: 230px;
+
+    /* Breakpoints */
+    --breakpoint-sm: 428px;
+    --breakpoint-md: 834px;
+    --breakpoint-lg: 1440px;
+
+    /* Colors */
+    /* Dominant Color */
+    --dominant-100: 0, 0%, 83%;
+    --dominant-200: 0, 0%, 65%;
+    --dominant-300: 0, 0%, 47%;
+    --dominant-400: 0, 0%, 29%;
+    --dominant-600: 0, 0%, 9%;
+    --dominant-700: 0, 0%, 7%;
+    --dominant-800: 0, 0%, 5%;
+    --dominant-900: 0, 0%, 2%;
+
+    /* complement Color */
+    --complement-100: 0, 0%, 83%;
+    --complement-200: 0, 0%, 66%;
+    --complement-300: 0, 0%, 49%;
+    --complement-400: 0, 0%, 32%;
+    --complement-600: 0, 0%, 12%;
+    --complement-700: 0, 0%, 9%;
+    --complement-800: 0, 0%, 6%;
+    --complement-900: 0, 0%, 3%;
+
+    --gray-50: 0, 0%, 98%;
+    --gray-100: 0, 0%, 96%;
+    --gray-200: 0, 0%, 92%;
+    --gray-300: 0, 0%, 88%;
+    --gray-400: 0, 0%, 82%;
+    --gray-500: 0, 0%, 64%;
+    --gray-600: 0, 0%, 45%;
+    --gray-700: 0, 0%, 27%;
+    --gray-800: 0, 0%, 9%;
+
+    --accent-100: 339, 31%, 87%;
+    --accent-200: 339, 31%, 75%;
+    --accent-300: 339, 30%, 62%;
+    --accent-400: 339, 32%, 49%;
+    --accent-primary: 339, 54%, 36%;
+    --accent-600: 339, 54%, 29%;
+    --accent-700: 339, 55%, 22%;
+    --accent-800: 338, 53%, 14%;
+    --accent-900: 339, 56%, 7%;
+
+    /* Calendar colors */
+    --calendar-active-bg: #ebf5ff;
+    --calendar-active-bg-dark: #26304b;
+    --calendar-done-bg: #f0faf2;
+    --calendar-done-bg-dark: #3c9a4f1a;
+    --calendar-pending-bg: #fffbeb;
+    --calendar-deadline-bg: #ffebeb;
+
+    /* Font Sizes */
+    --f-size-warning: 0.772rem;
+    --f-size-label: 0.823rem;
+    --f-size-footer: 0.878rem;
+    --f-size-caption: 0.937rem;
+    --f-size-heading-6: 1.067rem;
+    --f-size-heading-5: 1.138rem;
+    --f-size-heading-4: 1.215rem;
+    --f-size-heading-3: 1.296rem;
+    --f-size-heading-2: 1.383rem;
+    --f-size-heading-1: 1.476rem;
+    --f-size-display-3: 1.575rem;
+    --f-size-display-2: 1.68rem;
+    --f-size-display-1: 1.793rem;
+
+    /* Light heights */
+    --l-height-warning: 23.45px;
+    --l-height-label: 25.02px;
+    --l-height-footer: 26.7px;
+    --l-height-caption: 28.5px;
+    --l-height-heading-6: 30.4px;
+    --l-height-heading-5: 32.43px;
+    --l-height-heading-4: 34.62px;
+    --l-height-heading-3: 36.94px;
+    --l-height-heading-2: 39.41px;
+    --l-height-heading-1: 42.05px;
+    --l-height-display-3: 44.86px;
+    --l-height-display-2: 48.36px;
+    --l-height-display-1: 51.61px;
+  }
+
+  .light {
+    --dominant-primary: 0, 0%, 96%;
+
+    --complement-primary: 0, 0%, 100%;
+
+    --border: var(--complement-100);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Dominant Color */
+    --dominant-primary: 0, 0%, 12%;
+
+    /* complement Color */
+    --complement-primary: 0, 0%, 15%;
+
+    --border: var(--gray-700);
+  }
+}
