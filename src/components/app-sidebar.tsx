@@ -23,13 +23,13 @@ const items = [
     id: 1,
     title: "اساتید",
     summenu: true,
-    url: "",
+    url: "/Professors",
     icon: FaChalkboardTeacher,
     Content: [
       {
         id: 1,
         title: "لیست اساتید",
-        url: "",
+        url: "/Professors/lists",
       },
     ],
   },
@@ -37,8 +37,8 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="min-w-[10rem]">
-      <SidebarContent className="flex flex-col justify-between h-full border-b border-l bg-complement-primary">
+    <Sidebar className="">
+      <SidebarContent className="flex flex-col justify-between  border-b border-l bg-complement-primary">
         <SidebarGroup>
           <div className="flex items-center justify-between px-3 my-3 gap-4 text-xs">
             <div className="flex items-center gap-1">
@@ -50,23 +50,16 @@ export function AppSidebar() {
             <SidebarMenu className="flex flex-col items-end">
               {items.map((item) => (
                 <SidebarMenuItem key={item.id} className="w-full text-right">
-                  <Link to={item.url}>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className={`flex justify-start w-full h-auto py-1.5 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] hover:bg-gray-100 hover:text-black dark:hover:text-stone-50`}
-                    ></Button>
-                    <Collapsible className="group/collapsible w-full ">
+                  {item.summenu ? (
+                    <Collapsible className="group/collapsible w-full">
                       <SidebarGroup>
                         <SidebarGroupLabel asChild>
                           <CollapsibleTrigger>
-                            <Button
-                              className={`flex justify-start w-full! h-auto py-2 px-2   [&>div]:w-full  duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] `}
-                            >
+                            <Button className="flex justify-start w-full h-auto py-2 px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]">
                               <item.icon size={18} />
                               {item.title}
                               <ChevronDown
-                                className="mr-auto transition-transform group-data-[state=open]/collapsible:rotate-180 "
+                                className="mr-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
                                 size={18}
                               />
                             </Button>
@@ -77,7 +70,7 @@ export function AppSidebar() {
                             {item.Content?.map((contentItem) => (
                               <Link to={contentItem.url} key={contentItem.id}>
                                 <Button
-                                  className="w-full flex items-center  justify-start px-3"
+                                  className="w-full flex items-center justify-start px-3"
                                   variant="ghost"
                                   size="sm"
                                 >
@@ -92,7 +85,18 @@ export function AppSidebar() {
                         </CollapsibleContent>
                       </SidebarGroup>
                     </Collapsible>
-                  </Link>
+                  ) : (
+                    <Link to={item.url}>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="flex justify-start w-full h-auto py-1.5 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] hover:bg-gray-100 hover:text-black dark:hover:text-stone-50"
+                      >
+                        <item.icon size={18} />
+                        {item.title}
+                      </Button>
+                    </Link>
+                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>

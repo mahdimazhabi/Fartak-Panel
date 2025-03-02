@@ -7,16 +7,13 @@ import { Toaster } from "@/components/ui/sonner";
 const PanelLayout = () => {
   return (
     <div className="  flex flex-col w-screen h-screen max-h-screen overflow-hidden max-w-screen bg-dominant-primary ">
-      {/* Header */}
-      {/* Main Content */}
-      {/* loader */}
       <Toaster />
       {/*  */}
       <Header />
       <main className="relative flex items-stretch justify-end flex-1 overflow-hidden">
         {/* SideBar */}
-        <AppSidebar />
 
+        <AppSidebar />
         <div
           className={cn(
             "flex-1 h-full transition-all duration-300 overflow-y-auto scrollbar-thin",
