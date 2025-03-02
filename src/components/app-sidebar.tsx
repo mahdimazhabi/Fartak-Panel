@@ -16,8 +16,24 @@ import {
 } from "@radix-ui/react-collapsible";
 import { SidebarGroupLabel } from "@/components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
+import { FaChalkboardTeacher } from "react-icons/fa";
 // Menu items.
-// const items = [];
+const items = [
+  {
+    id: 1,
+    title: "اساتید",
+    summenu: true,
+    url: "",
+    icon: FaChalkboardTeacher,
+    Content: [
+      {
+        id: 1,
+        title: "لیست اساتید",
+        url: "",
+      },
+    ],
+  },
+];
 
 export function AppSidebar() {
   return (
@@ -32,44 +48,53 @@ export function AppSidebar() {
           </div>
           <SidebarGroupContent>
             <SidebarMenu className="flex flex-col items-end">
-              <SidebarMenuItem className="w-full text-right">
-                <Link to={""}>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className={`flex justify-start w-full h-auto py-1.5 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] hover:bg-gray-100 hover:text-black dark:hover:text-stone-50`}
-                  ></Button>
-                  <Collapsible className="group/collapsible w-full ">
-                    <SidebarGroup>
-                      <SidebarGroupLabel asChild>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className={`flex justify-start w-full! h-auto py-2 px-2   [&>div]:w-full  duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] hover:bg-gray-100 hover:text-black dark:hover:text-stone-50`}
-                        >
-                          <CollapsibleTrigger className="flex items-center w-full">
-                            <ChevronDown
-                              className="mr-auto transition-transform group-data-[state=open]/collapsible:rotate-180 "
-                              size={18}
-                            />
+              {items.map((item) => (
+                <SidebarMenuItem key={item.id} className="w-full text-right">
+                  <Link to={item.url}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className={`flex justify-start w-full h-auto py-1.5 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] hover:bg-gray-100 hover:text-black dark:hover:text-stone-50`}
+                    ></Button>
+                    <Collapsible className="group/collapsible w-full ">
+                      <SidebarGroup>
+                        <SidebarGroupLabel asChild>
+                          <CollapsibleTrigger>
+                            <Button
+                              className={`flex justify-start w-full! h-auto py-2 px-2   [&>div]:w-full  duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] `}
+                            >
+                              <item.icon size={18} />
+                              {item.title}
+                              <ChevronDown
+                                className="mr-auto transition-transform group-data-[state=open]/collapsible:rotate-180 "
+                                size={18}
+                              />
+                            </Button>
                           </CollapsibleTrigger>
-                        </Button>
-                      </SidebarGroupLabel>
-                      <CollapsibleContent>
-                        <SidebarGroupContent>
-                          <Button
-                            className="w-full flex items-center  justify-start px-3"
-                            variant="ghost"
-                            size="sm"
-                          >
-                            <span className="mb-1 ml-2 text-accent-primary font-black"></span>
-                          </Button>
-                        </SidebarGroupContent>
-                      </CollapsibleContent>
-                    </SidebarGroup>
-                  </Collapsible>
-                </Link>
-              </SidebarMenuItem>
+                        </SidebarGroupLabel>
+                        <CollapsibleContent>
+                          <SidebarGroupContent>
+                            {item.Content?.map((contentItem) => (
+                              <Link to={contentItem.url} key={contentItem.id}>
+                                <Button
+                                  className="w-full flex items-center  justify-start px-3"
+                                  variant="ghost"
+                                  size="sm"
+                                >
+                                  <span className="mb-1 ml-2 text-accent-primary font-black">
+                                    .
+                                  </span>
+                                  {contentItem.title}
+                                </Button>
+                              </Link>
+                            ))}
+                          </SidebarGroupContent>
+                        </CollapsibleContent>
+                      </SidebarGroup>
+                    </Collapsible>
+                  </Link>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
