@@ -1,0 +1,18 @@
+/* داخل فایل global.css یا index.css */
+.scrollbar::-webkit-scrollbar {
+  width: 8px; /* عرض اسکرول‌بار */
+  height: 8px; /* برای اسکرول افقی */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #888; /* رنگ دستگیره اسکرول */
+  border-radius: 10px; /* گرد کردن گوشه‌ها */
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; /* رنگ هنگام هاور */
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* رنگ پس‌زمینه */
+}

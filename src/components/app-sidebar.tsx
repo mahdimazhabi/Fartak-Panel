@@ -17,6 +17,7 @@ import {
 import { SidebarGroupLabel } from "@/components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import { User } from "lucide-react";
 
 // Menu items.
 const items = [
@@ -36,6 +37,20 @@ const items = [
         id: 2,
         title: "اضافه کردن استاد",
         url: "/Professors/add",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "کاربران",
+    summenu: true,
+    url: "/user",
+    icon: User,
+    Content: [
+      {
+        id: 1,
+        title: "لیست تمام کاربران",
+        url: "/user/lists",
       },
     ],
   },
