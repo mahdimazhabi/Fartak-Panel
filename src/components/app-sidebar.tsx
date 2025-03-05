@@ -17,6 +17,7 @@ import {
 import { SidebarGroupLabel } from "@/components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
 import { FaChalkboardTeacher } from "react-icons/fa";
+
 // Menu items.
 const items = [
   {
@@ -30,6 +31,11 @@ const items = [
         id: 1,
         title: "لیست اساتید",
         url: "/Professors/lists",
+      },
+      {
+        id: 2,
+        title: "اضافه کردن استاد",
+        url: "/Professors/add",
       },
     ],
   },
@@ -55,7 +61,10 @@ export function AppSidebar() {
                       <SidebarGroup>
                         <SidebarGroupLabel asChild>
                           <CollapsibleTrigger>
-                            <Button className="flex justify-start w-full h-auto py-2 px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]">
+                            <Button
+                              className="flex justify-start w-full h-auto py-2 px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]"
+                              variant={"default"}
+                            >
                               <item.icon size={18} />
                               {item.title}
                               <ChevronDown
@@ -66,11 +75,11 @@ export function AppSidebar() {
                           </CollapsibleTrigger>
                         </SidebarGroupLabel>
                         <CollapsibleContent>
-                          <SidebarGroupContent>
+                          <SidebarGroupContent className="px-3">
                             {item.Content?.map((contentItem) => (
                               <Link to={contentItem.url} key={contentItem.id}>
                                 <Button
-                                  className="w-full flex items-center justify-start px-3"
+                                  className="w-full flex items-center  rounded-sm justify-start px-3 mt-2"
                                   variant="ghost"
                                   size="sm"
                                 >

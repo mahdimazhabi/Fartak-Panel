@@ -10,7 +10,7 @@ const Table = React.forwardRef<
     <table
       ref={ref}
       className={cn(
-        "w-full caption-bottom text-sm table-fixed", // اضافه کردن table-fixed
+        "w-full caption-bottom text-sm table-fixed ", // اضافه کردن table-fixed
         className
       )}
       {...props}
@@ -61,7 +61,7 @@ const TableRow = React.forwardRef<
   <tr
     ref={ref}
     className={cn(
-      "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted ",
       className
     )}
     {...props}
@@ -76,7 +76,7 @@ const TableHead = React.forwardRef<
   <th
     ref={ref}
     className={cn(
-      " px-4 text-center align-middle font-medium text-muted-foreground w-1/4", // متن و عرض ستون‌ها
+      " px-3 py-3 text-center font-bold text-amber-600 align-middle ", // متن و عرض ستون‌ها
       className
     )}
     {...props}
@@ -91,7 +91,7 @@ const TableCell = React.forwardRef<
   <td
     ref={ref}
     className={cn(
-      "px-3 align-middle text-center w-1/4", // متن مرکزچین و عرض مساوی
+      "px-3 py-2.5 align-middle text-center w-1/4", // متن مرکزچین و عرض مساوی
       className
     )}
     {...props}

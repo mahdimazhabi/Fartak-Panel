@@ -6,7 +6,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { Toaster } from "@/components/ui/sonner";
 const PanelLayout = () => {
   return (
-    <div className="  flex flex-col w-screen h-screen max-h-screen overflow-hidden max-w-screen bg-dominant-primary ">
+    <div className="  flex flex-col w-screen h-screen max-h-screen overflow-hidden max-w-screen  bg-sidebar  ">
       <Toaster />
       {/*  */}
       <Header />
