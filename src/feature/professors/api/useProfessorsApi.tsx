@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getdataprofessors } from "../interface/interface";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 const useProfessorsApi = () => {
   const { data, isLoading, refetch } = useQuery<getdataprofessors[]>({
@@ -53,17 +54,18 @@ const useProfessorsApi = () => {
       const response = await axios.delete(
         "https://www.backend.fartakproject.ir/api/TeacherUsers/Delete",
         {
-          params: {
-            teacherUserId: id,
-          },
           headers: {
             "Content-Type": "application/json",
           },
+          data: {
+            teacherUserId: id,
+          },
         }
       );
+
       if (response) {
-        console.log(response);
-        return response.data;
+        await refetch();
+        toast.success("با موفقیت حذف گردید");
       }
     } catch (error) {
       console.error("Error deleting user:", error);

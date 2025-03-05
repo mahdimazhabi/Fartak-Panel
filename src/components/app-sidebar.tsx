@@ -43,7 +43,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="">
+    <Sidebar>
       <SidebarContent className="flex flex-col justify-between  border-b border-l bg-complement-primary">
         <SidebarGroup>
           <div className="flex items-center justify-between px-3 my-3 gap-4 text-xs">
