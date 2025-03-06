@@ -33,11 +33,11 @@ const items = [
         title: "لیست اساتید",
         url: "/Professors/lists",
       },
-      {
-        id: 2,
-        title: "اضافه کردن استاد",
-        url: "/Professors/add",
-      },
+      // {
+      //   id: 2,
+      //   title: "اضافه کردن استاد",
+      //   url: "/Professors/add",
+      // },
     ],
   },
   {

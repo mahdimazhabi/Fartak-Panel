@@ -20,7 +20,7 @@ export const Routers: RouteObject[] = [
         element: <ProfessorsPage />,
         children: [
           { path: "lists", element: <ProfessorsTable /> },
-          { path: "add", element: <ProfessorsAdd /> },
+          { path: "add/:userid", element: <ProfessorsAdd /> },
         ],
       },
       {
