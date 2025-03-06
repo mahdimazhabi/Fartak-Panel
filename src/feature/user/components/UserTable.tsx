@@ -8,31 +8,36 @@ import {
 } from "@/components/ui/table";
 import useUserApi from "../api/useUserApi";
 import { useEffect } from "react";
-// import { Button } from "@/components/ui/button";
-// import { useNavigate } from "react-router-dom";
+import { Input } from "@/components/ui/input";
 import LineLoader from "@/shared/loader/loaders/LineLoader";
 import { Trash } from "lucide-react";
+import { useSearchStore } from "../store/SearchUserStore";
+import { Search } from "lucide-react";
 export const UserTable = () => {
+  const { setSearchWord } = useSearchStore();
   const { DataUserAll, LoadingUserData, RefetchDataAllUser, remove } =
     useUserApi();
-  //   const navigate = useNavigate();
   useEffect(() => {
     RefetchDataAllUser();
   }, [DataUserAll]);
+
   return (
     <div>
       <div className="flex items-center justify-between mb-5">
         <div>
           <h1 className="text-lg">لیست کاربران</h1>
         </div>
-        {/* <div>
-          <Button
+        <div>
+          <Input
+            icon={Search}
+            iconPosition="left"
+            placeholder="جستجوی کابران....."
             className="bg-white rounded "
-            onClick={() => navigate("/Professors/add", { replace: true })}
-          >
-            ثبت سریع استاد
-          </Button>
-        </div> */}
+            onChange={(e) => {
+              setSearchWord(e.target.value);
+            }}
+          />
+        </div>
       </div>
       {LoadingUserData && <LineLoader />}
       <Table className="text-xs">
