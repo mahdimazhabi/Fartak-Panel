@@ -16,7 +16,7 @@ export const AddProfessorsSchema = yup.object().shape({
     .string()
     .oneOf(["0", "1"], "نوع تدریس را انتخاب کنید")
     .required("نوع تدریس را انتخاب کنید"),
-  TeacherTypeId: yup.number().required("پایه تدریس را انتخاب کنید"),
-
+  TeacherTypeId: yup.string().required("پایه تدریس را انتخاب کنید"),
+  FileImage: yup.mixed(),
   Description: yup.string().required("توضیحات الزامی است"),
 });

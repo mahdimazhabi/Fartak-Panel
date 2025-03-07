@@ -6,7 +6,7 @@
 
 .scrollbar::-webkit-scrollbar-thumb {
   background: #888; /* رنگ دستگیره اسکرول */
-  border-radius: 10px; /* گرد کردن گوشه‌ها */
+  border-radius: 5px; /* گرد کردن گوشه‌ها */
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {

@@ -31,21 +31,19 @@ const useProfessorsApi = () => {
     try {
       const response = await axios.post(
         "https://www.backend.fartakproject.ir/api/TeacherUsers/Add",
-        {
-          data,
-        },
+        data,
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-      if (response) {
-        console.log(response);
-        return response.data;
+      if (response.data.isSuccess) {
+        toast.success("با موفقیت اضافه شد");
+        return response.data.isSuccess;
       }
-    } catch {
-      console.log("error");
+    } catch (error) {
+      console.log("error", error);
     }
   };
 

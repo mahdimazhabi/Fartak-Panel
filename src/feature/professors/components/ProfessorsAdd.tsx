@@ -12,35 +12,59 @@ import { Textarea } from "@/components/ui/textarea";
 import { AddProfessorsSchema } from "../store/AddProfessorsSchema";
 import * as yup from "yup";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import useProfessorsApi from "../api/useProfessorsApi";
+import { useNavigate } from "react-router-dom";
 const ProfessorsAdd = () => {
   const { userid } = useParams();
   const { data } = useTypeTeacherApi();
   const [waiting, setWaiting] = useState<boolean>(false);
   const { add } = useProfessorsApi();
+  const navigate = useNavigate();
   type IFormInput = yup.InferType<typeof AddProfessorsSchema>;
 
   const {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm<IFormInput>({
-    // resolver: yupResolver(AddProfessorsSchema),
+    resolver: yupResolver(AddProfessorsSchema),
   });
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-    const AllData = { ...data, UserId: userid };
-    console.log(AllData);
+    const Alldata = new FormData();
+
+    if (data.FileImage && data.FileImage[0]) {
+      Alldata.append("FileImage", data.FileImage[0]);
+    }
+
+    Alldata.append("UserId", userid!);
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (key !== "FileImage" && value !== undefined && value !== null) {
+        Alldata.append(key, String(value));
+      }
+    });
+
+    console.log("FormData:", Object.fromEntries(Alldata.entries()));
 
     try {
       setWaiting(true);
-      await add(AllData);
-    } catch {
+      const response = await add(Alldata);
+      if (response) {
+        setTimeout(() => {
+          navigate("/Professors/lists", { replace: true });
+        }, 3000);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    } finally {
       setWaiting(false);
+      reset();
     }
   };
 
@@ -74,6 +98,7 @@ const ProfessorsAdd = () => {
           <div>
             <Input
               label="شهر"
+              type="text"
               placeholder="لطفا شهر را وارد کنید"
               variant={"secondary"}
               {...register("City")}
@@ -180,17 +205,16 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          {/* <div>
+          <div>
             <Input
               label="پروفایل"
               variant={"secondary"}
               placeholder="پروفایل کاربر را وارد کنید"
               className="w-full file:text-black file:text-xs"
               type="file"
-              // {...register("FileImage")}
-              // error={errors.FileImage}
+              {...register("FileImage")}
             />
-          </div> */}
+          </div>
         </div>
         <div>
           <Textarea
@@ -198,6 +222,7 @@ const ProfessorsAdd = () => {
             placeholder="نوضیحات مورد نظر خود را وارد کنید"
             {...register("Description")}
             error={errors.Description}
+            typeof="text"
           />
         </div>
         <div className="flex justify-center mt-20">
