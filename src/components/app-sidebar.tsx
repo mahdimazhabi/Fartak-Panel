@@ -77,7 +77,7 @@ export function AppSidebar() {
                         <SidebarGroupLabel asChild>
                           <CollapsibleTrigger>
                             <Button
-                              className="flex justify-start w-full h-auto py-2 px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]"
+                              className="flex justify-start  h-auto py-2 w-full! [&>div]:w-full px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]"
                               variant={"default"}
                             >
                               <item.icon size={18} />

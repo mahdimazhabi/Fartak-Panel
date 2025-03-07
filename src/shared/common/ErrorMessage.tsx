@@ -9,7 +9,12 @@ const ErrorMessage = ({ message, className }: ErrorMessageProps) => {
   if (!message) return null;
 
   return (
-    <span className={cn("text-satisfaction-50 text-xs  mt-2", className)}>
+    <span
+      className={cn(
+        "text-satisfaction-50 text-xs text-red-500  mt-2",
+        className
+      )}
+    >
       {message}
     </span>
   );

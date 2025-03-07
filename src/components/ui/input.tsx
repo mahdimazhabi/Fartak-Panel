@@ -2,8 +2,8 @@ import { Label } from "@radix-ui/react-label";
 import * as React from "react";
 import { FieldError } from "react-hook-form";
 
-import { cn } from "@/shared/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
+import { cn } from "@/shared/lib/utils";
 import ErrorMessage from "@/shared/common/ErrorMessage";
 
 export type IconType = React.FunctionComponent<
@@ -11,13 +11,15 @@ export type IconType = React.FunctionComponent<
     title?: string;
   }
 >;
+
 const inputVariants = cva(
-  "flex items-center gap-2 w-full  py-1 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 bg-complement-primary  px-4   disabled:bg-gray-800   size-caption text-gray-600  transition duration-300 rounded-sm dark:bg-complement-primary   dark:focus:border-link",
+  "flex items-center gap-2 w-full  placeholder:text-xs border border-gray-500 dark:border-gray-700 py-1 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 bg-complement-primary px-4 placeholder:text-black dark:placeholder:text-black hover:bg-complement-primary hover:border-link disabled:hover:border-gray-700 disabled:bg-gray-800 focus:bg-complement-primary focus:border-link size-caption text-gray-600 dark:text-black transition duration-300 rounded-sm dark:hover:border-link",
   {
     variants: {
       variant: {
-        default: "",
-        secondary: "h-10 bg-gray-50 border-border dark:bg-dominant-primary  ",
+        default: "h-10",
+        secondary:
+          "h-10 bg-gray-50 border-border text-xs placeholder:text-xs dark:bg-dominant-primary",
       },
       hasIcon: {
         true: "pr-10",
@@ -44,6 +46,7 @@ export interface InputProps
   error?: FieldError;
   icon?: IconType;
   iconPosition?: "left" | "right";
+  cursorpointer?: boolean; // Prop برای کنترل رفتار cursor
   children?: React.ReactNode;
   onBlur?: React.FocusEventHandler<HTMLInputElement>; // Allow custom onBlur
 }
@@ -55,6 +58,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     label,
     icon: Icon,
     iconPosition = "right", // پیش‌فرض: راست
+    cursorpointer = false, // پیش‌فرض: غیرفعال
     error,
     hasIcon,
     variant,
@@ -86,27 +90,34 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <div className="group">
       {label && (
-        <Label htmlFor={props.id} className="mb-2 text-sm block">
+        <Label
+          htmlFor={props.id}
+          className="mb-2 block text-black  dark:text-white"
+        >
           {label}
         </Label>
       )}
+
       <div className="flex items-center relative">
         {iconPosition === "left" && Icon && (
           <div
             className={cn(
-              "absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-600"
+              "absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-600",
+              cursorpointer && "cursor-pointer" // در صورت فعال بودن cursorpointer
             )}
           >
             <Icon className={variant === "secondary" ? "w-6 h-6" : "w-5 h-5"} />
           </div>
         )}
+
         <input
           dir={type === "mobile" ? "ltr" : "rtl"}
           type={type}
           className={cn(
-            " placeholder:text-xs placeholder:text-black   ",
             inputVariants({ variant, rounded, hasIcon }),
-            error && "border-satisfaction-50  dark:border-satisfaction-50",
+            Icon && iconPosition === "right" && "pr-12", // فاصله برای آیکون سمت راست
+            Icon && iconPosition === "left" && "pl-12", // فاصله برای آیکون سمت چپ
+            error && "border-satisfaction-50 dark:border-satisfaction-50",
             className,
             type === "mobile" && "ltr:text-left" // Force LTR for mobile input
           )}
@@ -114,6 +125,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           onBlur={handleBlur}
           {...restProps}
         />
+
+        {iconPosition === "right" && Icon && (
+          <div
+            className={cn(
+              "absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600",
+              cursorpointer && "cursor-pointer" // در صورت فعال بودن cursorpointer
+            )}
+          >
+            <Icon className={variant === "secondary" ? "w-6 h-6" : "w-5 h-5"} />
+          </div>
+        )}
 
         {children}
       </div>
@@ -124,17 +146,4 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 });
 Input.displayName = "Input";
 
-const InputIcon = ({
-  className,
-  children,
-}: React.PropsWithChildren<{
-  className?: string;
-}>) => {
-  return (
-    <div className={cn("absolute top-1/5 right-4 text-gray-600", className)}>
-      {children}
-    </div>
-  );
-};
-
-export { Input, InputIcon, inputVariants };
+export { Input, inputVariants };
