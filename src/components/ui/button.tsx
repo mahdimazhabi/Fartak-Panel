@@ -5,12 +5,12 @@ import { Loader } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center px-3 gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "text-primary-foreground transition-colors duration-300 hover:bg-amber-500 hover:text-white",
+          "text-primary-foreground transition-colors px-3 duration-300 hover:bg-amber-500 hover:text-white",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/80 hover:text-destructive-foreground",
         outline:

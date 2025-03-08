@@ -18,11 +18,19 @@ import { SidebarGroupLabel } from "@/components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { User } from "lucide-react";
+// import { Home } from "lucide-react";
 
 // Menu items.
 const items = [
+  // {
+  //   id: 1,
+  //   title: "خونه",
+  //   url: "/home",
+  //   icon: Home,
+  //   summenu: true,
+  // },
   {
-    id: 1,
+    id: 2,
     title: "اساتید",
     summenu: true,
     url: "/Professors",
@@ -41,7 +49,7 @@ const items = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "کاربران",
     summenu: true,
     url: "/user",
@@ -112,9 +120,9 @@ export function AppSidebar() {
                   ) : (
                     <Link to={item.url}>
                       <Button
-                        variant="ghost"
+                        variant={"default"}
                         size="sm"
-                        className="flex justify-start w-full h-auto py-1.5 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px] hover:bg-gray-100 hover:text-black dark:hover:text-stone-50"
+                        className="  h-auto py-2 flex justify-start   w-full duration-300 rounded-sm text-complement-300 dark:text-complement-300 px-4 text-[12px]"
                       >
                         <item.icon size={18} />
                         {item.title}

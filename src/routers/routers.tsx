@@ -6,6 +6,7 @@ import { ProfessorsTable } from "@/feature/professors/components/ProfessorsTable
 import ProfessorsAdd from "@/feature/professors/components/ProfessorsAdd";
 import UserPage from "@/feature/user/page/UserPage";
 import { UserTable } from "@/feature/user/components/UserTable";
+
 export const Routers: RouteObject[] = [
   {
     path: "/",

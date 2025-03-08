@@ -1,7 +1,6 @@
-/* داخل فایل global.css یا index.css */
 .scrollbar::-webkit-scrollbar {
-  width: 8px; /* عرض اسکرول‌بار */
-  height: 8px; /* برای اسکرول افقی */
+  width: 8px;
+  height: 8px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
