@@ -8,13 +8,10 @@ import {
 } from "@/components/ui/table";
 import useProfessorsApi from "../api/useProfessorsApi";
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import LineLoader from "@/shared/loader/loaders/LineLoader";
 import { Trash } from "lucide-react";
 export const ProfessorsTable = () => {
   const { data, refetch, isLoading, remove } = useProfessorsApi();
-  const navigate = useNavigate();
   useEffect(() => {
     refetch();
   }, [data]);
@@ -24,14 +21,7 @@ export const ProfessorsTable = () => {
         <div>
           <h1 className="text-lg">لیست اساتید</h1>
         </div>
-        <div>
-          <Button
-            className="bg-white rounded "
-            onClick={() => navigate("/Professors/add", { replace: true })}
-          >
-            ثبت سریع استاد
-          </Button>
-        </div>
+        <div></div>
       </div>
       {isLoading && <LineLoader />}
       <Table className="text-xs">

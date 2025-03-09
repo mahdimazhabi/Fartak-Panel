@@ -42,11 +42,11 @@ const items = [
         title: "لیست اساتید",
         url: "/dashboard/professors/lists",
       },
-      // {
-      //   id: 2,
-      //   title: "اضافه کردن استاد",
-      //   url: "/dashboard/professors/add/:userid",
-      // },
+      {
+        id: 3,
+        title: "نوع تدریس اساتید",
+        url: "/dashboard/professors/type",
+      },
     ],
   },
   {
