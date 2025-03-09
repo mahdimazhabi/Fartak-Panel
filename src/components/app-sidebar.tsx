@@ -18,33 +18,34 @@ import { SidebarGroupLabel } from "@/components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { User } from "lucide-react";
-// import { Home } from "lucide-react";
+import { Home } from "lucide-react";
 
 // Menu items.
+
 const items = [
-  // {
-  //   id: 1,
-  //   title: "خونه",
-  //   url: "/home",
-  //   icon: Home,
-  //   summenu: true,
-  // },
+  {
+    id: 1,
+    title: "خونه",
+    url: "/dashboard",
+    icon: Home,
+    summenu: true,
+  },
   {
     id: 2,
     title: "اساتید",
     summenu: true,
-    url: "/Professors",
+    url: "/dashboard/professors",
     icon: FaChalkboardTeacher,
     Content: [
       {
         id: 1,
         title: "لیست اساتید",
-        url: "/Professors/lists",
+        url: "/dashboard/professors/lists",
       },
       // {
       //   id: 2,
       //   title: "اضافه کردن استاد",
-      //   url: "/Professors/add",
+      //   url: "/dashboard/professors/add/:userid",
       // },
     ],
   },
@@ -52,18 +53,17 @@ const items = [
     id: 3,
     title: "کاربران",
     summenu: true,
-    url: "/user",
+    url: "/dashboard/user",
     icon: User,
     Content: [
       {
         id: 1,
         title: "لیست تمام کاربران",
-        url: "/user/lists",
+        url: "/dashboard/user/lists",
       },
     ],
   },
 ];
-
 export function AppSidebar() {
   return (
     <Sidebar>

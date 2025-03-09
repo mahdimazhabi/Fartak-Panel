@@ -6,18 +6,38 @@ import { ProfessorsTable } from "@/feature/professors/components/ProfessorsTable
 import ProfessorsAdd from "@/feature/professors/components/ProfessorsAdd";
 import UserPage from "@/feature/user/page/UserPage";
 import { UserTable } from "@/feature/user/components/UserTable";
+import { Navigate } from "react-router-dom";
+import AuthenticationLayout from "@/shared/layouts/AuthenticationLayout/AuthenticationLayout";
+import Login from "@/feature/Authentication/components/Login";
+import LoginRequired from "@/shared/required/LoginRequired";
 
 export const Routers: RouteObject[] = [
   {
-    path: "/",
+    index: true,
+    element: <Navigate to="/auth/login" replace />,
+  },
+  {
+    path: "/auth",
+    element: <AuthenticationLayout />,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
     element: (
-      <SidebarProvider>
-        <PanelLayout />
-      </SidebarProvider>
+      <LoginRequired>
+        <SidebarProvider>
+          <PanelLayout />
+        </SidebarProvider>
+      </LoginRequired>
     ),
     children: [
       {
-        path: "/Professors",
+        path: "professors",
         element: <ProfessorsPage />,
         children: [
           { path: "lists", element: <ProfessorsTable /> },
@@ -25,7 +45,7 @@ export const Routers: RouteObject[] = [
         ],
       },
       {
-        path: "/user",
+        path: "user",
         element: <UserPage />,
         children: [
           {
