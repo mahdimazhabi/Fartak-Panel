@@ -88,11 +88,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   };
 
   return (
-    <div className="group">
+    <div className="group h-[85px]">
       {label && (
         <Label
           htmlFor={props.id}
-          className="mb-2 block text-black  dark:text-white"
+          className="mb-2 block text-black dark:text-white"
         >
           {label}
         </Label>
@@ -103,7 +103,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           <div
             className={cn(
               "absolute top-1/2 left-4 transform -translate-y-1/2 text-gray-600",
-              cursorpointer && "cursor-pointer" // در صورت فعال بودن cursorpointer
+              cursorpointer && "cursor-pointer"
             )}
           >
             <Icon className={variant === "secondary" ? "w-6 h-6" : "w-5 h-5"} />
@@ -115,11 +115,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           type={type}
           className={cn(
             inputVariants({ variant, rounded, hasIcon }),
-            Icon && iconPosition === "right" && "pr-12", // فاصله برای آیکون سمت راست
-            Icon && iconPosition === "left" && "pl-12", // فاصله برای آیکون سمت چپ
+            Icon && iconPosition === "right" && "pr-12",
+            Icon && iconPosition === "left" && "pl-12",
             error && "border-satisfaction-50 dark:border-satisfaction-50",
             className,
-            type === "mobile" && "ltr:text-left" // Force LTR for mobile input
+            type === "mobile" && "ltr:text-left"
           )}
           ref={ref}
           onBlur={handleBlur}
@@ -130,7 +130,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           <div
             className={cn(
               "absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-600",
-              cursorpointer && "cursor-pointer" // در صورت فعال بودن cursorpointer
+              cursorpointer && "cursor-pointer"
             )}
           >
             <Icon className={variant === "secondary" ? "w-6 h-6" : "w-5 h-5"} />
@@ -140,7 +140,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         {children}
       </div>
 
-      {error && <ErrorMessage message={error.message} />}
+      <div className="min-h-[20px]">
+        {error && <ErrorMessage message={error.message} />}
+      </div>
     </div>
   );
 });

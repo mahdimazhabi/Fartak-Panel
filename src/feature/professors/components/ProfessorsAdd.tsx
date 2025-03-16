@@ -75,7 +75,7 @@ const ProfessorsAdd = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-2 gap-5 items-start w-full">
-          <div className="h-[85px]">
+          <div>
             <Input
               label="قیمت آنلاین"
               variant={"secondary"}
@@ -85,7 +85,7 @@ const ProfessorsAdd = () => {
               error={errors.OnlinePrice}
             />
           </div>
-          <div className="h-[85px]">
+          <div>
             <Input
               label="قیمت حضوری"
               variant={"secondary"}
@@ -95,7 +95,7 @@ const ProfessorsAdd = () => {
               error={errors.InPersonPrice}
             />
           </div>
-          <div className="h-[85px]">
+          <div>
             <Input
               label="شهر"
               type="text"
@@ -105,7 +105,7 @@ const ProfessorsAdd = () => {
               error={errors.City}
             />
           </div>
-          <div className="h-[85px]">
+          <div>
             <label className="text-sm">جنسیت</label>
             <Controller
               name="Gender"
@@ -128,7 +128,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          <div className="h-[85px]">
+          <div>
             <label className="text-sm">زبان تدریس</label>
             <Controller
               name="LanguageTeach"
@@ -151,7 +151,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          <div className="h-[85px]">
+          <div>
             <label className="mb-2 text-sm">پایه تدریس</label>
             <Controller
               name="TeacherTypeId"
@@ -180,7 +180,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          <div className="h-[85px]">
+          <div>
             <label className="mb-2 text-sm">نوع تدریس</label>
             <Controller
               name="TypeTeaching"
@@ -203,7 +203,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          <div className="h-[85px]">
+          <div>
             <Input
               label="پروفایل"
               variant={"secondary"}
