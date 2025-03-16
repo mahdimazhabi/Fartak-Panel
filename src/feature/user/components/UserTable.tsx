@@ -77,7 +77,7 @@ export const UserTable = () => {
                     size={14}
                     className="hover:text-blue-400"
                     onClick={() =>
-                      navigate(`/Professors/add/${invoice.userId}`)
+                      navigate(`/dashboard/professors/add/${invoice.userId}`)
                     }
                   />
                 </TableCell>

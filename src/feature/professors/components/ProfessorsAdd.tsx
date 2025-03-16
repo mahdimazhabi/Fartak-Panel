@@ -74,8 +74,8 @@ const ProfessorsAdd = () => {
         <h1 className="text-lg">اضافه کردن استاد</h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-2 gap-5 items-center w-full">
-          <div>
+        <div className="grid grid-cols-2 gap-5 items-start w-full">
+          <div className="h-[85px]">
             <Input
               label="قیمت آنلاین"
               variant={"secondary"}
@@ -85,7 +85,7 @@ const ProfessorsAdd = () => {
               error={errors.OnlinePrice}
             />
           </div>
-          <div>
+          <div className="h-[85px]">
             <Input
               label="قیمت حضوری"
               variant={"secondary"}
@@ -95,7 +95,7 @@ const ProfessorsAdd = () => {
               error={errors.InPersonPrice}
             />
           </div>
-          <div>
+          <div className="h-[85px]">
             <Input
               label="شهر"
               type="text"
@@ -105,8 +105,8 @@ const ProfessorsAdd = () => {
               error={errors.City}
             />
           </div>
-          <div>
-            <label className=" text-sm">جنسیت</label>
+          <div className="h-[85px]">
+            <label className="text-sm">جنسیت</label>
             <Controller
               name="Gender"
               control={control}
@@ -128,7 +128,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          <div>
+          <div className="h-[85px]">
             <label className="text-sm">زبان تدریس</label>
             <Controller
               name="LanguageTeach"
@@ -151,8 +151,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-
-          <div>
+          <div className="h-[85px]">
             <label className="mb-2 text-sm">پایه تدریس</label>
             <Controller
               name="TeacherTypeId"
@@ -181,8 +180,7 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-
-          <div>
+          <div className="h-[85px]">
             <label className="mb-2 text-sm">نوع تدریس</label>
             <Controller
               name="TypeTeaching"
@@ -205,12 +203,12 @@ const ProfessorsAdd = () => {
               </span>
             )}
           </div>
-          <div>
+          <div className="h-[85px]">
             <Input
               label="پروفایل"
               variant={"secondary"}
               placeholder="پروفایل کاربر را وارد کنید"
-              className="w-full file:text-black file:text-xs"
+              className="w-full file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-complement-primary file:text-complement-300 hover:file:bg-complement-200 file:cursor-pointer bg-white"
               type="file"
               {...register("FileImage")}
             />

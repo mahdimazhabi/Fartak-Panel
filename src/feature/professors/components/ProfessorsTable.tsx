@@ -69,7 +69,6 @@ export const ProfessorsTable = () => {
             </TableRow>
           ))}
         </TableBody>
-        <TableRow></TableRow>
       </Table>
     </div>
   );

@@ -27,6 +27,8 @@ const useUserApi = () => {
             }
           );
           if (response) {
+            console.log(response);
+
             return response.data.users;
           }
         } catch {

@@ -83,18 +83,15 @@ export function AppSidebar() {
                     <Collapsible className="group/collapsible w-full">
                       <SidebarGroup>
                         <SidebarGroupLabel asChild>
-                          <CollapsibleTrigger>
-                            <Button
-                              className="flex justify-start  h-auto py-2 w-full! [&>div]:w-full px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]"
-                              variant={"default"}
-                            >
+                          <CollapsibleTrigger className="w-full">
+                            <div className="flex items-center justify-start gap-2 h-auto py-2 w-full px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]">
                               <item.icon size={18} />
                               {item.title}
                               <ChevronDown
                                 className="mr-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
                                 size={18}
                               />
-                            </Button>
+                            </div>
                           </CollapsibleTrigger>
                         </SidebarGroupLabel>
                         <CollapsibleContent>
