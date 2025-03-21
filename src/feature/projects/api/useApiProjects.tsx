@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { DataAllProjects } from "../interface/interface";
+import { toast } from "sonner";
 const useApiProjects = () => {
   const {
     data: DataProjectsList,
@@ -27,7 +28,28 @@ const useApiProjects = () => {
       }
     },
   });
-  return { DataProjectsList, LoadingProjectsLists, refetch };
+  const remove = async (id: number) => {
+    try {
+      const response = await axios.delete(
+        "https://www.backend.fartakproject.ir/api/Projects/Delete",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: {
+            projectId: id,
+          },
+        }
+      );
+      if (response) {
+        await refetch();
+        toast("با موفقیت حذف شد");
+      }
+    } catch {
+      console.log("error");
+    }
+  };
+  return { DataProjectsList, LoadingProjectsLists, refetch, remove };
 };
 
 export default useApiProjects;

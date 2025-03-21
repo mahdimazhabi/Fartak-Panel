@@ -12,7 +12,8 @@ import LineLoader from "@/shared/loader/loaders/LineLoader";
 import { Trash } from "lucide-react";
 import { Eye } from "lucide-react";
 export const ProjectsTable = () => {
-  const { DataProjectsList, LoadingProjectsLists, refetch } = useApiProjects();
+  const { DataProjectsList, LoadingProjectsLists, refetch, remove } =
+    useApiProjects();
   useEffect(() => {
     refetch();
   }, [DataProjectsList]);
@@ -54,7 +55,7 @@ export const ProjectsTable = () => {
                 <Trash
                   size={14}
                   className=" hover:text-red-500 cursor-pointer "
-                  // onClick={() => remove(invoice.teacherUserId)}
+                  onClick={() => remove(invoice.projectId)}
                 />
               </TableCell>
             </TableRow>
