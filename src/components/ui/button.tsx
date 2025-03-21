@@ -66,7 +66,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         <div
           className={cn(
-            "transition-opacity duration-150 z-20 relative flex items-center justify-center gap-1",
+            "transition-opacity duration-150 z-20 relative flex items-center justify-between gap-1",
             loading && "opacity-0"
           )}
         >

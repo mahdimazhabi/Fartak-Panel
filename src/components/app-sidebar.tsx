@@ -20,6 +20,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { User } from "lucide-react";
 import { Home } from "lucide-react";
 import { useState, useEffect } from "react";
+import { ProjectorIcon } from "lucide-react";
 
 // Menu items.
 
@@ -64,21 +65,35 @@ const items = [
       },
     ],
   },
+  {
+    id: 4,
+    title: "پروژه ها",
+    summenu: true,
+    url: "/dashboard/projects",
+    icon: ProjectorIcon,
+    Content: [
+      {
+        id: 1,
+        title: "لیست پروژه ها",
+        url: "/dashboard/projects/lists",
+      },
+    ],
+  },
 ];
 export function AppSidebar() {
   const [openMenus, setOpenMenus] = useState<{ [key: number]: boolean }>(() => {
-    const saved = localStorage.getItem('sidebarState');
+    const saved = localStorage.getItem("sidebarState");
     return saved ? JSON.parse(saved) : {};
   });
 
   useEffect(() => {
-    localStorage.setItem('sidebarState', JSON.stringify(openMenus));
+    localStorage.setItem("sidebarState", JSON.stringify(openMenus));
   }, [openMenus]);
 
   const handleMenuToggle = (itemId: number) => {
-    setOpenMenus(prev => ({
+    setOpenMenus((prev) => ({
       ...prev,
-      [itemId]: !prev[itemId]
+      [itemId]: !prev[itemId],
     }));
   };
 
@@ -97,22 +112,28 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.id} className="w-full text-right">
                   {item.summenu ? (
-                    <Collapsible 
+                    <Collapsible
                       className="group/collapsible w-full"
                       open={openMenus[item.id]}
                       onOpenChange={() => handleMenuToggle(item.id)}
                     >
                       <SidebarGroup>
                         <SidebarGroupLabel asChild>
-                          <CollapsibleTrigger className="w-full">
-                            <div className="flex items-center justify-start gap-2 h-auto py-2 w-full px-2 duration-300 rounded-sm text-complement-300 dark:text-complement-300 text-[12px]">
-                              <item.icon size={18} />
-                              {item.title}
+                          <CollapsibleTrigger className="w-full  ">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              className="w-full! flex   [&>div]:w-full  justify-between rounded-sm px-3 mt-2"
+                            >
+                              <div className="flex items-center gap-2">
+                                <item.icon size={18} />
+                                {item.title}
+                              </div>
                               <ChevronDown
-                                className="mr-auto transition-transform group-data-[state=open]/collapsible:rotate-180"
+                                className="transition-transform group-data-[state=open]/collapsible:rotate-180"
                                 size={18}
                               />
-                            </div>
+                            </Button>
                           </CollapsibleTrigger>
                         </SidebarGroupLabel>
                         <CollapsibleContent>
@@ -120,11 +141,11 @@ export function AppSidebar() {
                             {item.Content?.map((contentItem) => (
                               <Link to={contentItem.url} key={contentItem.id}>
                                 <Button
-                                  className="w-full flex items-center  rounded-sm justify-start px-3 mt-2"
+                                  className="w-full flex items-center hover:text-yellow-400  rounded-sm justify-start px-3 mt-2"
                                   variant="ghost"
                                   size="sm"
                                 >
-                                  <span className="mb-1 ml-2 text-accent-primary font-black">
+                                  <span className="mb-1 ml-2 text-accent-primary font-black text-yellow-400">
                                     .
                                   </span>
                                   {contentItem.title}
