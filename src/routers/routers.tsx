@@ -10,6 +10,8 @@ import { Navigate } from "react-router-dom";
 import AuthenticationLayout from "@/shared/layouts/AuthenticationLayout/AuthenticationLayout";
 import Login from "@/feature/Authentication/components/Login";
 import LoginRequired from "@/shared/required/LoginRequired";
+import ProjectsPage from "@/feature/projects/page/ProjectsPage";
+import { ProjectsTable } from "@/feature/projects/components/ProjectsTable";
 
 export const Routers: RouteObject[] = [
   {
@@ -53,6 +55,11 @@ export const Routers: RouteObject[] = [
             element: <UserTable />,
           },
         ],
+      },
+      {
+        path: "projects",
+        element: <ProjectsPage />,
+        children: [{ path: "lists", element: <ProjectsTable /> }],
       },
     ],
   },

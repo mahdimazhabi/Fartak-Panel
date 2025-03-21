@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { DataAllProjects } from "../interface/interface";
 const useApiProjects = () => {
   const {
     data: DataProjectsList,
     isLoading: LoadingProjectsLists,
     refetch,
-  } = useQuery({
+  } = useQuery<DataAllProjects[]>({
     queryKey: ["getAllDataListProjects"],
     queryFn: async () => {
       try {

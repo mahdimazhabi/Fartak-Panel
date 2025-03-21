@@ -20,7 +20,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { User } from "lucide-react";
 import { Home } from "lucide-react";
 import { useState, useEffect } from "react";
-import { ProjectorIcon } from "lucide-react";
+import { BsFolder2Open } from "react-icons/bs";
 
 // Menu items.
 
@@ -70,7 +70,7 @@ const items = [
     title: "پروژه ها",
     summenu: true,
     url: "/dashboard/projects",
-    icon: ProjectorIcon,
+    icon: BsFolder2Open,
     Content: [
       {
         id: 1,
