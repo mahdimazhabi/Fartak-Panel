@@ -19,6 +19,7 @@ import { ChevronDown } from "lucide-react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { User } from "lucide-react";
 import { Home } from "lucide-react";
+import { useState, useEffect } from "react";
 
 // Menu items.
 
@@ -65,6 +66,22 @@ const items = [
   },
 ];
 export function AppSidebar() {
+  const [openMenus, setOpenMenus] = useState<{ [key: number]: boolean }>(() => {
+    const saved = localStorage.getItem('sidebarState');
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  useEffect(() => {
+    localStorage.setItem('sidebarState', JSON.stringify(openMenus));
+  }, [openMenus]);
+
+  const handleMenuToggle = (itemId: number) => {
+    setOpenMenus(prev => ({
+      ...prev,
+      [itemId]: !prev[itemId]
+    }));
+  };
+
   return (
     <Sidebar>
       <SidebarContent className="flex flex-col justify-between  border-b border-l bg-complement-primary">
@@ -80,7 +97,11 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.id} className="w-full text-right">
                   {item.summenu ? (
-                    <Collapsible className="group/collapsible w-full">
+                    <Collapsible 
+                      className="group/collapsible w-full"
+                      open={openMenus[item.id]}
+                      onOpenChange={() => handleMenuToggle(item.id)}
+                    >
                       <SidebarGroup>
                         <SidebarGroupLabel asChild>
                           <CollapsibleTrigger className="w-full">
